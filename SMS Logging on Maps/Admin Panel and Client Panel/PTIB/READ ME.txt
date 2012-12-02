@@ -1,0 +1,2 @@
+to run these webpages you must download the DOJO toolkit from here
+https://dojotoolkit.org/download/

@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="StyleSheet" type="text/css" href="Style.css">
+        <link rel="stylesheet" href="dijit/themes/claro/claro.css">
+        <link rel="StyleSheet" type="text/css" href="dijit/themes/tundra/tundra.css">
+        <style type="text/css">
+            html, 
+            body 
+            {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+        </style>
+        <script>dojoConfig = {parseOnLoad: true}</script>
+        <script src='dojo/dojo.js'></script>
+        <script>
+            require(["dojo/parser","dijit/form/DateTextBox", "dijit/layout/BorderContainer", "dijit/layout/TabContainer", "dijit/layout/AccordionContainer", "dijit/layout/ContentPane", "dijit/layout/AccordionPane"]);
+            dojo.require("dijit.form.Button");
+            dojo.require("dijit.Dialog");
+            dojo.require("dijit.form.TextBox");
+            dojo.require("dojox.charting.Chart2D");
+            dojo.require("dojox.charting.themes.MiamiNice");
+            
+        </script>
+        <style type="text/css">
+            html { height: 100% }
+            body { height: 100%; margin: 0; padding: 0 }
+            #map_canvas { height: 100% }
+        </style>
+        <script type="text/javascript"
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjaF9KcZwHL4TpPB9E1bX0kpKSXrpNiMo&sensor=false">
+        </script>
+        <script type="text/javascript">
+            function initialize() {
+                var mapOptions = {
+                    center: new google.maps.LatLng(31.38, 72.94),
+                    zoom: 6,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+               
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(31.480791052504823 , 74.31785523169446),
+                    map: map, 
+                    title: "HELLO",
+                    draggable: true
+                });
+                
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(33.480791052504823 , 72.31785523169446),
+                    map: map, 
+                    title: "HELLO",
+                    draggable: true
+                });
+                
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(31.480791052504823 , 72.31785523169446),
+                    map: map, 
+                    title: "HELLO",
+                    draggable: true
+                });
+                
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(29.480791052504823 , 71.31785523169446),
+                    map: map, 
+                    title: "HELLO",
+                    draggable: true
+                });
+                
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(31.480791052504823 , 79.31785523169446),
+                    map: map, 
+                    title: "HELLO",
+                    draggable: true
+                });
+                
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(31.480791052504823 , 74.31785523169446),
+                    map: map, 
+                    title: "HELLO",
+                    draggable: true
+                });
+                marker.openInfoWindowHtml("hello");
+                 
+                
+                google.maps.event.addListener(marker, 'dragend', function(event) {
+                    document.getElementById("newPosition").innerHTML='new position is '+event.latLng.lat()+' / '+event.latLng.lng(); 
+                });
+ 
+            }
+        </script>
+
+    </head>
+    <body class="claro" onload="initialize()">
+        <div class="demoLayout" style="height: 100%; width: 100%" data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design: 'headline'">
+            <div class="centerPanel" data-dojo-type="dijit.layout.ContentPane" data-dojo-props="region: 'top'">
+                REGISTRATION & MONITORING OF COMPLAINTS THROUGH SMS AND WEB
+            </div>
+            <div class="centerPanel" data-dojo-type="dijit.layout.ContentPane" data-dojo-props="region: 'center'">
+                <a>Select Complaint</a>
+                <select>
+                    <option value="">Select Complaint</option>
+                    <option value="Complaint1">Complaint1</option>
+                    <option value="Complaint2">Complaint2</option>
+                    <option value="Complaint3">Complaint3</option>
+                    <option value="Complaint4">Complaint4</option>
+                </select> 
+                <div id="map_canvas"></div>
+            </div>
+            <div class="edgePanel" data-dojo-type="dijit.layout.ContentPane" data-dojo-props="region: 'left'">
+                <div style="width: 300px; height: 300px">
+                    <div data-dojo-type="dijit/layout/AccordionContainer" style="height: 300px;">
+                        <div data-dojo-type="dijit/layout/ContentPane" title="Complaint Details">
+                            <table>
+                                <tr>
+                                    <td>Complaint: </td>
+                                    <td><textarea  id="Complaint">the complaint text will be displayed here</textarea></td>
+                                </tr>
+                                <tr>
+                                    <td>Longitude: <div id="Longitude"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Latitude: <div id="Latitude"></div></td>
+                                </tr>
+
+                            </table>
+                            <div id="ResolveStatus">Status:Resolved/unresolved</div>
+                        </div>
+                        <div data-dojo-type="dijit/layout/ContentPane" title="Resolved Complaints">
+                            <a>Total 10 complaints have been resolved out of 30</a><br><hr>
+
+                            <a>Complaint1</a><br><hr>
+                            <a>Complaint2</a><br><hr>
+                            <a>Complaint3</a><br><hr>
+                            <a>Complaint4</a><br><hr>
+                            <a>Complaint5</a><br><hr>
+                            <a>Complaint6</a><br><hr>
+                            <a>Complaint7</a><br><hr>
+                            <a>Complaint8</a><br><hr>
+                            <a>Complaint9</a><br><hr>
+                            <a>Complaint10</a><br><hr>
+                            
+                        </div>
+                        <div data-dojo-type="dijit/layout/ContentPane" title="unResolved Complaints">
+                            <a>Total 20 complaints are still unresolved out of 30</a><br><hr>
+
+                            <a>Complaint1</a><br><hr>
+                            <a>Complaint2</a><br><hr>
+                            <a>Complaint3</a><br><hr>
+                            <a>Complaint4</a><br><hr>
+                            <a>Complaint5</a><br><hr>
+                            <a>Complaint6</a><br><hr>
+                            <a>Complaint7</a><br><hr>
+                            <a>Complaint8</a><br><hr>
+                            <a>Complaint9</a><br><hr>
+                            <a>Complaint10</a><br><hr>
+                            <a>Complaint11</a><br><hr>
+                            <a>Complaint12</a><br><hr>
+                            <a>Complaint13</a><br><hr>
+                            <a>Complaint14</a><br><hr>
+                            <a>Complaint15</a><br><hr>
+                            <a>Complaint16</a><br><hr>
+                            <a>Complaint17</a><br><hr>
+                            <a>Complaint18</a><br><hr>
+                            <a>Complaint19</a><br><hr>
+                            <a>Complaint20</a><br><hr>
+                        </div>
+                    </div>
+                </div>
+                <div id="newPosition"></div><br>
+
+
+            </div>
+        </div>
+
+    </body>
+</html>
